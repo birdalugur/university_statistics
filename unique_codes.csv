@@ -1,0 +1,234 @@
+code,university,uni
+1,abdullah gül ü.,agu
+2,"acibadem mehmet ali̇ aydinlar 
+üni̇versi̇tesi̇",acıbadem
+3,ada kent üni̇versi̇tesi̇,adakent
+5,adana alparslan türkeş bilim ve teknoloji ü.,atu
+5,adana at bilim ve teknoloji ü.,atu
+6,adıyaman ü.,adyu
+7,afyon kocatepe ü.,aku
+8,afyon sağlık bilimleri ü.,afsu
+9,akdeniz ü.,akdeniz
+10,akdeni̇z karpaz üni̇versi̇tesi̇,akun
+11,aksaray ü.,aksaray
+12,alanya alaaddin keykubat ü.,alanya
+13,alanya hamdullah emin paşa ü.,alanyahep
+14,altinbaş üni̇versi̇tesi̇,altınbaş
+15,amasya ü.,amasya
+16,anadolu ü.,anadolu
+17,ankara bilim ü.,abilim
+18,ankara hacı bayram veli ü.,hacıbayram
+19,ankara medipol ü.,amedipol
+20,ankara müzik ve güzel san. ü.,mgu
+21,ankara sosyal bilimler ü.,asbu
+22,ankara yıldırım beyazıt ü.,aybu
+23,ankara ü.,ankara
+24,antalya akev ü.,akev
+25,antalya bilim ü.,antalya
+26,ardahan ü.,ardahan
+27,arkin yaratici sanatlar ve tasarim üni̇versi̇tesi̇,arucad
+28,artvin çoruh ü.,artvin
+29,atatürk ü.,atauni
+30,ataşehi̇r adigüzel myo,adıgüzel
+31,atilim üni̇versi̇tesi̇,atilim
+32,avrasya ü.,avrasya
+33,aydın adnan menderes ü.,adu
+34,ağrı i̇brahim çeçen ü.,agri
+35,bahçeşehir ü.,bau
+36,bahçeşehi̇r kibris üni̇versi̇tesi̇,baucyprus
+37,balıkesir ü.,balıkesir
+38,bandırma onyedi eylül ü.,bandırma
+39,bartın ü.,bartın
+40,batman ü.,batman
+41,bayburt ü.,bayburt
+42,başkent ü.,başkent
+43,beykent ü.,beykent
+44,beykoz ü.,beykoz
+45,"bezm-i̇ alem vakif 
+üni̇versi̇tesi̇",bezmialem
+46,bilecik şeyh edebali ü.,bilecik
+47,bingöl ü.,bingöl
+48,biruni ü.,biruni
+49,bitlis eren ü.,beu
+50,bolu abant i̇zzet baysal ü.,ibu
+51,boğaziçi ü.,boun
+52,burdur mehmet akif ersoy ü.,makif
+53,bursa teknik ü.,btu
+54,bursa uludağ ü.,uludag
+55,demiroğlu bilim ü.,demiroğlu
+56,dicle ü.,dicle
+57,dokuz eylül ü.,deu
+58,doğu akdeni̇z üni̇versi̇tesi̇,dau
+59,doğuş ü.,dugus
+60,düzce ü.,duzce
+61,ege ü.,ege
+62,erciyes ü.,erciyes
+63,erzincan binali yıldırım ü.,ebyu
+64,erzurum teknik ü.,etü
+65,eskişehir osmangazi ü.,ogu
+66,eskişehir teknik ü.,estu
+67,fatih sultan mehmet vakıf ü.,fsm
+68,fenerbahçe ü.,fbu
+69,fırat ü.,fu
+70,galatasaray ü.,gsu
+71,gazi ü.,gazi
+72,gaziantep i̇slam bilim ve tek. ü.,gibtu
+73,gaziantep ü.,gantep
+74,gebze teknik ü.,gtu
+75,giresun ü.,giresun
+76,gi̇rne ameri̇kan üni̇versi̇tesi̇,gau
+77,gi̇rne üni̇versi̇tesi̇,girne
+78,gümüşhane ü.,gümüşhane
+79,hacettepe ü.,hu
+80,hakkâri ü.,hakkari
+81,haliç ü.,haliç
+82,harran ü.,harran
+83,hasan kalyoncu ü.,hku
+84,hatay mustafa kemal ü.,mku
+85,hitit ü.,hitit
+86,isparta uygulamalı bilimleri ü.,isubu
+87,iğdır ü.,ığdır
+88,işik üni̇versi̇tesi̇,isikun
+89,i̇bn haldun ü.,ihu
+90,"i̇hsan doğramaci bi̇lkent 
+üni̇versi̇tesi̇",bilkent
+91,i̇nönü ü.,inönü
+92,i̇skenderun teknik ü.,iste
+93,"i̇stanbul 29 mayis 
+üni̇versi̇tesi̇",29mayıs
+94,i̇stanbul arel ü.,arel
+95,i̇stanbul atlas ü.,atlas
+96,i̇stanbul aydin üni̇versi̇tesi̇,aydın
+97,"i̇stanbul ayvansaray 
+üni̇versi̇tesi̇",topkapı
+98,i̇stanbul bilgi ü.,bilgi
+99,"i̇stanbul esenyurt 
+üni̇versi̇tesi̇",esenyurt
+100,i̇stanbul galata ü.,galata
+101,i̇stanbul gedik ü.,gedik
+102,i̇stanbul gelişim ü.,gelişim
+103,i̇stanbul kent ü.,kent
+104,i̇stanbul kültür ü.,iku
+105,i̇stanbul medeniyet ü.,imu
+106,i̇stanbul medipol ü.,imedipol
+107,i̇stanbul okan ü.,okan
+108,i̇stanbul rumeli ü.,rumeli
+109,i̇stanbul sabahattin zaim ü.,izu
+110,"i̇stanbul sağlik ve sosyal 
+bi̇li̇mler myo (faruk saraç
+tasarim myo)",issb
+111,"i̇stanbul sağlik ve teknoloji̇ 
+üni̇versi̇tesi̇",istun
+112,i̇stanbul teknik ü.,itu
+113,i̇stanbul ticaret ü.,ticaret
+114,i̇stanbul yeni yüzyıl ü.,yeniyuzyil
+115,i̇stanbul ü.,iü
+116,i̇stanbul şehi̇r üni̇versi̇tesi̇,işehir
+117,i̇stanbul şi̇şli̇ myo,şişli
+118,i̇stinye ü.,istinye
+125,i̇yte,iyte
+120,i̇zmir bakırçay ü.,bakircay
+121,i̇zmir demokrasi ü.,idu
+122,i̇zmir ekonomi ü.,ieu
+123,i̇zmir kâtip çelebi ü.,ikcu
+124,i̇zmir tınaztepe ü.,iztü
+125,i̇zmir yüksek teknoloji enstitüsü,iyte
+126,i̇zmi̇r kavram myo,kavram
+127,kadir has ü.,khas
+128,kafkas ü.,kafkas
+129,kahramanmaraş sütçü i̇mam ü.,ksu
+130,kapadokya ü.,kapadokya
+131,karabük ü.,kbu
+132,karadeniz teknik ü.,ktu
+133,karamanoğlu mehmetbey ü.,kmu
+134,kastamonu ü.,kastamonu
+135,kayseri ü.,kayseri
+136,kibris ameri̇kan üni̇versi̇tesi̇,kau
+137,kibris bati üni̇versi̇tesi̇,cwu
+138,kibris i̇li̇m üni̇versi̇tesi̇,csu
+139,kibris sağlik ve toplum bi̇li̇mleri̇ üni̇versi̇tesi̇,kstu
+140,kibris sosyal bi̇li̇mler üni̇versi̇tesi̇,asbukktc
+141,kilis 7 aralık ü.,kilis
+142,kktc i̇stanbul tekni̇k üni̇versi̇tesi̇,itukktc
+143,kktc orta doğu tekni̇k üni̇versi̇tesi̇,odtukktc
+144,kocaeli sağlık ve teknoloji ü.,kostu
+145,kocaeli ü.,kou
+146,"konya gida ve tarim 
+üni̇versi̇tesi̇",kgtu
+147,konya teknik ü.,ktun
+148,koç ü.,ku
+149,kto karatay ü.,karatay
+150,kütahya dumlupınar ü.,dpu
+151,kütahya sağlık bilimleri ü.,ksbu
+152,kırklareli ü.,klu
+153,kırşehir ahi evran ü.,ahievran
+154,lefke avrupa üni̇versi̇tesi̇,lau
+155,lokman hekim ü.,lhekim
+156,malatya turgut özal ü.,ozal
+157,maltepe ü.,maltepe
+158,manisa celâl bayar ü.,mcbu
+159,mardin artuklu ü.,mardin
+160,marmara ü.,marmara
+161,mef ü.,mef
+162,mersin ü.,meu
+163,mimar sinan güzel sanatlar ü.,msgsu
+164,munzur ü.,munzur
+165,muğla sıtkı koçman ü.,msku
+166,muş alparslan ü.,muş
+167,necmettin erbakan ü.,erbakan
+168,nevşehir hacı bektaş veli ü.,nevşehir
+169,niğde ömer halisdemir ü.,ohu
+170,nişantaşı ü.,nişantaşı
+171,nuh naci yazgan ü.,nny
+172,ondokuz mayıs ü.,omu
+173,ordu ü.,ordu
+174,orta doğu teknik ü.,odtu
+175,osmaniye korkut ata ü.,osmaniye
+176,ostim teknik ü.,ostim
+177,pamukkale ü.,pau
+178,piri reis ü.,preis
+179,rauf denktaş üni̇versi̇tesi̇,rdu
+180,recep tayyip erdoğan ü.,rte
+181,sabanci üni̇versi̇tesi̇,sabancı
+182,sakarya uygulamalı bilimler ü.,subu
+183,sakarya ü.,sau
+184,samsun ü.,omu
+185,sanko ü.,sanko
+186,sağlık bilimleri ü.,sbu
+187,selçuk ü.,selçuk
+188,siirt ü.,siirt
+189,sinop ü.,sinop
+190,sivas cumhuriyet ü.,sivas
+191,süleyman demirel ü.,sdu
+192,tarsus ü.,tarsus
+193,ted ü.,ted
+194,tekirdağ namık kemal ü.,nku
+195,tobb ekonomi ve teknoloji ü.,tobb
+196,tokat gaziosmanpaşa ü.,gop
+197,toros ü.,toros
+198,trabzon ü.,tru
+199,trakya ü.,trakya
+200,"türk hava kurumu 
+üni̇versi̇tesi̇",thku
+201,türk-alman ü.,tau
+202,ufuk ü.,ufuk
+203,uluslararasi fi̇nal üni̇versi̇tesi̇,final
+204,uluslararasi kibris üni̇versi̇tesi̇,ciu
+205,uşak ü.,uşak
+206,van yüzüncü yıl ü.,yyu
+207,yakin doğu üni̇versi̇tesi̇,neu
+208,yalova ü.,yalova
+209,yaşar ü.,yaşar
+210,yeditepe ü.,yeditepe
+211,yozgat bozok ü.,bozok
+212,yüksek i̇htisas ü.,yiu
+213,yıldız teknik ü.,ytu
+214,zonguldak bülent ecevit ü.,beun
+215,çanakkale onsekiz mart ü.,comu
+216,çankaya ü.,çankaya
+217,çankırı karatekin ü.,karatekin
+218,çağ ü.,çağ
+219,çukurova ü.,çü
+220,özyeğin ü.,özyeğin
+221,üsküdar ü.,üsküdar
+222,şırnak ü.,şırnak
