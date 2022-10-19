@@ -5,7 +5,8 @@ all_paths = []
 
 uni_names = pd.Series()
 
-uni_kw = ['Üniversite', 'ÜNİVERSİTE**','ÜNİVERSİTE/MYO', 'üniversite', 'ÜNİVERSİTE', 'ÜNİVERSİTE / MYO', 'ÜNİVERSİTE/ MYO**']
+uni_kw = ['Üniversite', 'ÜNİVERSİTE**', 'ÜNİVERSİTE/MYO', 'üniversite', 'ÜNİVERSİTE', 'ÜNİVERSİTE / MYO',
+          'ÜNİVERSİTE/ MYO**']
 
 other_kw = []
 
@@ -18,7 +19,6 @@ for path in all_paths:
             break
     else:
         other_kw.append(path)
-
 
 unicodes = pd.read_csv("all_uni - all_uni.csv")
 
@@ -54,6 +54,7 @@ def _read_from_colname(df, col):
     data = data.dropna()
     data['university'] = unique_codes.loc[data.code.values]['uni'].values
     return data
+
 
 @dataclass
 class Tuma2018:
@@ -123,7 +124,6 @@ class Tuma2020:
 
 @dataclass
 class Tuma2021:
-
     file_path = "Tuma Sıralamaları/2021 Vakıf Üniversitelerinin Memnuniyet Alanlarına Göre Sıralaması.xlsx"
 
     df = pd.read_excel(file_path, header=[0, 1])
@@ -144,6 +144,26 @@ class Tuma2021:
     kisisel_gelisim_ve_kariyer_destegi = _read_from_colname(df, [('Kişisel Gelişim ve Kariyer Desteği', 'Puan')])
 
 
+@dataclass
+class Tuma2022:
+    file_path = "Tuma Sıralamaları/2022 Vakıf Üniversitelerinin Memnuniyet Alanlarına Göre Sıralaması.xlsx"
+
+    df = pd.read_excel(file_path, header=[0, 1])
+
+    genel_memnuniyet_puani = _read_from_colname(df, [('Genel Memnuniyet Puanı', 'Unnamed: 2_level_1')])
+
+    ogrenim_deneyiminin_tatminkarligi = _read_from_colname(df, [('Öğrenim Deneyiminin Tatminkârlığı', 'Puan')])
+
+    yerleske_ve_yasamin_doyuruculugu = _read_from_colname(df, [('Yerleşke ve Yaşamının Doyuruculuğu', 'Puan')])
+
+    akademik_destek = _read_from_colname(df, [('Akademik Destek ve İlgi', 'Puan')])
+
+    kurumun_yonetim_ve_isleyisinden_memnuniyeti = _read_from_colname(df, [
+        ('Kurumun Yönetim ve İşleyişinden Memnuniyet', 'Puan')])
+
+    ogrenme_imkan_ve_kaynak_zenginligi = _read_from_colname(df, [('Öğrenme İmkân ve Kaynaklarının Zenginliği', 'Puan')])
+
+    kisisel_gelisim_ve_kariyer_destegi = _read_from_colname(df, [('Kişisel Gelişim ve Kariyer Desteği', 'Puan')])
 
 
 def _read_from_sheet(excel_file, sheet_name, cols):
