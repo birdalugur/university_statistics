@@ -199,6 +199,24 @@ class Table2021:
         ["TOPLAM ÖĞRENCİ SAYISI"]
     )
 
+    onlisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Toplam Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["ÖNLİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Toplam Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["LİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisansustu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Toplam Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["LİSANSÜSTÜ ÖĞRENCİ SAYISI"]
+    )
+
     kadrolu_ogretim_uyesi_basina_ogrenci_sayisi = _read_from_sheet(
         yok,
         "Kadrolu Öğretim Üyesi Sayılarına Göre Vakıf Üniversiteleri",
@@ -209,6 +227,12 @@ class Table2021:
         yok,
         "Doktora Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
         ["DOKTORA PROGRAM SAYISI***"]
+    )
+
+    doktora_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Doktora Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["DOKTORA ÖĞRENCİ SAYISI**"]
     )
 
     ogrenci_basina_kapali_alan = _read_from_sheet(
@@ -227,6 +251,12 @@ class Table2021:
         yok,
         "Yabancı Uyruklu Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
         ["YABANCI UYRUKLU ÖĞRENCİLERİN TOPLAM ÖĞRENCİ İÇERİSİNDEKİ ORANI (%)"]
+    )
+
+    yabanci_uyruklu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Yabancı Uyruklu Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
+        ["YABANCI UYRUKLU ÖĞRENCİ SAYISI"]
     )
 
     toplam_ogrenci_icinde_gelen_ogrenci_orani = _read_from_sheet(
@@ -349,6 +379,12 @@ class Table2021:
         ["ÖĞRETİM ELEMANLARINA ÖDENEN ÜCRETLER TOPLAMI (TL)"]
     )
 
+    ogretim_elemanlarina_odenen_ucretlerin_ogrenci_gelirine_orani = _read_from_sheet(
+        yok,
+        "Öğretim Elemanlarına Ödenen Ücretlerin Toplamına Göre Vakıf Yükseköğretim Kurumları",
+        ["ÖĞRETİM ELEMANINA ÖDENEN ÜCRETLERİN ÖĞRENCİ GELİRİNE ORANI (%)"]
+    )
+
     ogretim_elemanlarina_odenen_ucretlerin_toplam_gidere_orani = _read_from_sheet(
         yok,
         "Öğretim Elemanlarına Ödenen Ücretlerin Toplamına Göre Vakıf Yükseköğretim Kurumları",
@@ -356,7 +392,20 @@ class Table2021:
     )
 
 
-@dataclass
+def _gelen_giden_orani(gelen, giden):
+    giden = giden.set_index('code')
+    gelen = gelen.set_index('code')
+
+    giden_gelen_orani = (gelen['value'] / giden['value'])
+
+    giden_gelen_orani = pd.concat(
+        [giden_gelen_orani, unique_codes.loc[giden_gelen_orani.index].uni], axis=1
+    ).reset_index().rename({"uni": "university"}, axis=1)
+
+    return giden_gelen_orani
+
+
+@dataclass()
 class Table2020:
     yok = pd.ExcelFile("Yök Raporları/2020.ods")
 
@@ -364,6 +413,24 @@ class Table2020:
         yok,
         "Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
         ["TOPLAM ÖĞRENCİ SAYISI"]
+    )
+
+    onlisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["ÖNLİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["LİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisansustu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
+        ["LİSANSÜSTÜ ÖĞRENCİ SAYISI"]
     )
 
     kadrolu_ogretim_uyesi_basina_ogrenci_sayisi = _read_from_sheet(
@@ -376,6 +443,12 @@ class Table2020:
         yok,
         "Doktora Programı Başına Düşen Öğrenci Sayısına Göre Vakıf Üniversiteleri",
         ["DOKTORA PROGRAM SAYISI**"]
+    )
+
+    doktora_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Doktora Programı Başına Düşen Öğrenci Sayısına Göre Vakıf Üniversiteleri",
+        ["DOKTORA ÖĞRENCİSAYISI***"]
     )
 
     ogrenci_basina_kapali_alan = _read_from_sheet(
@@ -394,6 +467,12 @@ class Table2020:
         yok,
         "Yabancı Uyruklu Öğrenci   Sayısına Göre Vakıf Yükseköğretim Kurumları",
         ["YABANCI UYRUKLU ÖĞRENCİLERİN TOPLAM ÖĞRENCİ İÇERİSİNDEKİ ORANI (%)"]
+    )
+
+    yabanci_uyruklu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Yabancı Uyruklu Öğrenci   Sayısına Göre Vakıf Yükseköğretim Kurumları",
+        ["YABANCI UYRUKLU ÖĞRENCİ SAYISI"]
     )
 
     toplam_ogrenci_icinde_gelen_ogrenci_orani = _read_from_sheet(
@@ -419,6 +498,8 @@ class Table2020:
         "2019-2020 Eğitim Öğretim Döneminde Yatay Geçiş ile Gelen Öğrenci Sayısına Göre Vakıf Üniversiteleri.",
         ["YATAY GEÇİŞ İLE GELEN ÖĞRENCİ SAYISI"]
     )
+
+    gelen_ogrencinin_giden_ogrenciye_orani = _gelen_giden_orani(gelen_ogrenci_sayisi, giden_ogrenci_sayisi)
 
     yurt_disindan_gelen_ogrenci_sayisi = _read_from_sheet(
         yok,
@@ -531,6 +612,24 @@ class Table2019:
         ["TOPLAM ÖĞRENCİ SAYISI"]
     )
 
+    onlisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci  Sayılarına  Göre  Vakıf Üniversiteleri",
+        ["ÖNLİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci  Sayılarına  Göre  Vakıf Üniversiteleri",
+        ["LİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisansustu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Öğrenci  Sayılarına  Göre  Vakıf Üniversiteleri",
+        ["LİSANSÜSTÜ ÖĞRENCİ SAYISI"]
+    )
+
     kadrolu_ogretim_uyesi_basina_ogrenci_sayisi = _read_from_sheet(
         yok,
         "Kadrolu Öğretim Üyesi Başına Düşen Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
@@ -552,6 +651,12 @@ class Table2019:
         yok,
         "Yabancı Uyruklu Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
         ["YABANCI UYRUKLU ÖĞRENCİLERİN TOPLAM ÖĞRENCİ İÇERİSİNDEKİ ORANI (%)"]
+    )
+
+    yabanci_uyruklu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Yabancı Uyruklu Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
+        ["YABANCI UYRUKLU ÖĞRENCİ SAYISI"]
     )
 
     toplam_ogrenci_icinde_gelen_ogrenci_orani = _read_from_sheet(
@@ -577,6 +682,8 @@ class Table2019:
         "2018-2019 Döneminde Yatay Geçiş ile Gelen Öğrenci Sayısına Göre Vakıf Yükseköğretim Kurumları",
         ["YATAY GEŞİŞ İLE GELEN ÖĞRENCİ SAYISI"]
     )
+
+    gelen_ogrencinin_giden_ogrenciye_orani = _gelen_giden_orani(gelen_ogrenci_sayisi, giden_ogrenci_sayisi)
 
     ogrenci_basi_cari_gider = _read_from_sheet(
         yok,
@@ -629,6 +736,24 @@ class Table2018:
         yok,
         "Vakıf Üniversiteleri Öğrenci Sayıları",
         ["TOPLAM ÖĞRENCİ SAYISI"]
+    )
+
+    onlisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Vakıf Üniversiteleri Öğrenci Sayıları",
+        ["ÖN LİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisans_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Vakıf Üniversiteleri Öğrenci Sayıları",
+        ["LİSANS ÖĞRENCİ SAYISI"]
+    )
+
+    lisansustu_ogrenci_sayisi = _read_from_sheet(
+        yok,
+        "Vakıf Üniversiteleri Öğrenci Sayıları",
+        ["LİSANSÜSTÜ ÖĞRENCİ SAYISI"]
     )
 
     kapali_alan = _read_from_sheet(
