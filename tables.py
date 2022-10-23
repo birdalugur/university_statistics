@@ -6,7 +6,7 @@ all_paths = []
 uni_names = pd.Series()
 
 uni_kw = ['Üniversite', 'ÜNİVERSİTE**', 'ÜNİVERSİTE/MYO', 'üniversite', 'ÜNİVERSİTE', 'ÜNİVERSİTE / MYO',
-          'ÜNİVERSİTE/ MYO**']
+          'ÜNİVERSİTE/ MYO**', 'ÜNİVERSİTE/ MYO']
 
 other_kw = []
 
@@ -53,6 +53,29 @@ def _read_from_colname(df, col):
     data = data.rename({select_col[0]: "value"}, axis=1)
     data = data.dropna()
     data['university'] = unique_codes.loc[data.code.values]['uni'].values
+    return data
+
+
+def _read_from_sheet(excel_file, sheet_name, cols):
+    data = pd.read_excel(excel_file, sheet_name)
+    uni_col = []
+    for kw in uni_kw:
+        if kw in data.columns:
+            uni_col.append(kw)
+            break
+    else:
+        print(data.columns)
+        raise Exception("Üniversite sütunu bulunamadı!")
+
+    uni_col = uni_col[0]
+    data[uni_col] = data[uni_col].str.lower()
+    data = data.merge(unicodes, how='left', left_on=uni_col, right_on='university')
+    cols.extend(['university', 'code'])
+    data = data[cols]
+    data = data.rename({cols[0]: "value"}, axis=1)
+    data = data.dropna()
+    data['university'] = unique_codes.loc[data.code.values]['uni'].values
+
     return data
 
 
@@ -166,29 +189,6 @@ class Tuma2022:
     kisisel_gelisim_ve_kariyer_destegi = _read_from_colname(df, [('Kişisel Gelişim ve Kariyer Desteği', 'Puan')])
 
 
-def _read_from_sheet(excel_file, sheet_name, cols):
-    data = pd.read_excel(excel_file, sheet_name)
-    uni_col = []
-    for kw in uni_kw:
-        if kw in data.columns:
-            uni_col.append(kw)
-            break
-    else:
-        print(data.columns)
-        raise Exception("Üniversite sütunu bulunamadı!")
-
-    uni_col = uni_col[0]
-    data[uni_col] = data[uni_col].str.lower()
-    data = data.merge(unicodes, how='left', left_on=uni_col, right_on='university')
-    cols.extend(['university', 'code'])
-    data = data[cols]
-    data = data.rename({cols[0]: "value"}, axis=1)
-    data = data.dropna()
-    data['university'] = unique_codes.loc[data.code.values]['uni'].values
-
-    return data
-
-
 @dataclass
 class Table2021:
     yok = pd.ExcelFile("Yök Raporları/2021.ods")
@@ -226,7 +226,7 @@ class Table2021:
     doktora_program_sayisi = _read_from_sheet(
         yok,
         "Doktora Öğrenci Sayılarına Göre Vakıf Üniversiteleri",
-        ["DOKTORA PROGRAM SAYISI***"]
+        ["DOKTORA PROGRAMSAYISI***"]
     )
 
     doktora_ogrenci_sayisi = _read_from_sheet(
@@ -238,13 +238,13 @@ class Table2021:
     ogrenci_basina_kapali_alan = _read_from_sheet(
         yok,
         "Öğrenci Başına Düşen Kapalı Alan Dağılımına Göre Vakıf Yükseköğretim Kurumları",
-        ["ÖĞRENCİ BAŞINA KAPALI ALAN**"]
+        ["ÖĞRENCİ BAŞINA KAPALIALAN**"]
     )
 
     ogrenci_basina_acik_alan = _read_from_sheet(
         yok,
         "Öğrenci Başına Düşen Açık Alan Dağılımına Göre Vakıf Yükseköğretim Kurumları",
-        ["ÖĞRENCİ BAŞINA AÇIK ALAN**"]
+        ["ÖĞRENCİ BAŞINA AÇIKALAN**"]
     )
 
     yabanci_uyruklu_ogrencilerin_toplam_ogrenci_icerisindeki_orani = _read_from_sheet(
@@ -304,7 +304,7 @@ class Table2021:
     toplam_arge_harcamalari = _read_from_sheet(
         yok,
         "Toplam Ar-Ge Harcamalarına Göre Vakıf Üniversiteleri",
-        ["TOPLAM AR-GE HARCAMASI** (TL)"]
+        ["TOPLAM AR-GEHARCAMASI**(TL)"]
     )
 
     reklam_harcamalari = _read_from_sheet(
@@ -370,7 +370,7 @@ class Table2021:
     ardeb_destekleri = _read_from_sheet(
         yok,
         "Vakıf Yükseköğretim Kurumlarının 2020 Yılı TÜBİTAK- ARDEB Destek İstatistiklerine Göre Sıralamaları",
-        ["YÜRÜRLÜKTEKİ  PROJELERE 2020 YILI  İÇİNDE AKTARILAN  TUTAR-CARİ"]
+        ["YÜRÜRLÜKTEKİ PROJELERE 2020 YILI İÇİNDE AKTARILAN TUTAR-CARİ"]
     )
 
     ogretim_elemanlarina_odenen_ucretler_toplami = _read_from_sheet(
@@ -390,6 +390,28 @@ class Table2021:
         "Öğretim Elemanlarına Ödenen Ücretlerin Toplamına Göre Vakıf Yükseköğretim Kurumları",
         ["ÖĞRETİM ELEMANINA ÖDENEN ÜCRETLERİN TOPLAM GİDERE ORANI (%)"]
     )
+
+
+    ales_esit_agirlik = _read_from_sheet(
+        yok,
+        "2020 ALES 2. Dönem Eşit Ağırlık Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+    ales_sayisal = _read_from_sheet(
+        yok,
+        "2020 ALES 2. Dönem Sayısal Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
+    ales_sozel = _read_from_sheet(
+        yok,
+        "2020 ALES 2. Dönem Sözel Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
 
 
 def _gelen_giden_orani(gelen, giden):
@@ -602,6 +624,26 @@ class Table2020:
     )
 
 
+    ales_sozel = _read_from_sheet(
+        yok,
+        "TABLO 54 2019 ALES 3. Dönem Sözel Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["ADAY ORANI(%)"]
+    )
+
+    ales_sayisal = _read_from_sheet(
+        yok,
+        "TABLO 53 2019 ALES 3. Dönem Sayısal Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["ADAY ORANI(%)"]
+    )
+
+
+    ales_esit_agirlik = _read_from_sheet(
+        yok,
+        "TABLO 52 2019 ALES 3. Dönem Eşit Ağırlık Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["ADAY ORANI(%)"]
+    )
+
+
 @dataclass
 class Table2019:
     yok = pd.ExcelFile("Yök Raporları/2019.ods")
@@ -728,6 +770,26 @@ class Table2019:
     )
 
 
+    ales_sozel = _read_from_sheet(
+        yok,
+        "TABLO 33 2018 ALES 3. Dönem Sözel Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+    ales_sayisal = _read_from_sheet(
+        yok,
+        "TABLO 32 2018 ALES 3. Dönem Sayısal Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
+    ales_esit_agirlik = _read_from_sheet(
+        yok,
+        "TABLO 31 2018 ALES 3. Dönem Eşit Ağırlık Başarı Sıralamasına Göre Vakıf Üniversiteleri",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
 @dataclass
 class Table2018:
     yok = pd.ExcelFile("Yök Raporları/2018.ods")
@@ -771,7 +833,7 @@ class Table2018:
     ogrenci_basi_cari_gider = _read_from_sheet(
         yok,
         "Vakıf Yükseköğretim Kurumlarında Öğrenci Başına Cari Gider Miktarı",
-        ["ÖĞRENCİ BAŞINA CARİ GİDER** (TL)"]
+        ["ÖĞRENCİ BAŞINA CARİ GİDER (TL)"]
     )
 
     burslu_ogrenci_orani = _read_from_sheet(
@@ -795,5 +857,26 @@ class Table2018:
     ardeb_destekleri = _read_from_sheet(
         yok,
         "Vakıf Üniversitelerinin TÜBİTAK- ARDEB Proje Bütçeleri (2017)",
-        ["PROJELERE YIL İÇİNDE AKTARILAN TUTAR (MİLYON TL)**"]
+        ["PROJELERE YIL İÇİNDE AKTARILAN TUTAR (MİLYON TL)"]
     )
+
+    ales_sozel = _read_from_sheet(
+        yok,
+        "TABLO 23 Vakıf Üniversitelerinin ALES-Sözel Başarı Sıralaması ",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+    ales_sayisal = _read_from_sheet(
+        yok,
+        "TABLO 22 Vakıf Üniversitelerinin ALES- Sayısal Başarı Sıralaması ",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
+    ales_esit_agirlik = _read_from_sheet(
+        yok,
+        "TABLO 21 Vakıf Üniversitelerinin ALES-EA Başarı Sıralaması ",
+        ["PUANI 70 VE ÜZERİNDE OLAN ADAY ORANI (%)"]
+    )
+
+
